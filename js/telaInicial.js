@@ -1,9 +1,18 @@
+let carrinho = [];
+
 function getList(array) {
     let list = [];
     for (let index = 0; index < array.length; index++) {
         list.push(array[index]);
     }
     return list;
+}
+
+function getProduct(id) {
+    for (let index = 0; index < products.length; index++) {
+        if (id == index) return products[index]; 
+    }
+    return console.log("item não encontrado!");
 }
 
 function setCategory( ) {
@@ -44,6 +53,18 @@ function setProducts( ) {
         div.appendChild(botao);
         main.appendChild(div);
     }
+}
+
+function comprar(event) {
+    let product = getProduct(this.id);
+    carrinho.push(product);
+    event.preventDefault();
+}
+
+function setCarrinho() {
+    let enviar = JSON.stringify(carrinho);
+    sessionStorage.setItem('carrinho', enviar);
+    console.log(carrinho);
 }
 
 function start() {
