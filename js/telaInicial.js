@@ -10,26 +10,30 @@ function getList(array) {
 
 function getProduct(id) {
     for (let index = 0; index < products.length; index++) {
-        if (id == index) return products[index]; 
+        if (id == index) return products[index];
     }
     return console.log("item não encontrado!");
 }
 
-function setCategory( ) {
+function setCategory() {
     let categoryList = getList(category);
 
     let sidebar = document.querySelector("ul");
     categoryList.sort();
     for (let index = 0; index < categoryList.length; index++) {
+        let link = document.createElement("a");
+        link.id = index;
+        link.onclick = filtrarCategoria;
         let item = document.createElement("li");
         item.innerHTML = categoryList[index];
-        sidebar.appendChild(item);
+
+        link.appendChild(item);
+        sidebar.appendChild(link);
     }
 }
 
-function setProducts( ) {
+function setProducts() {
     let productsList = getList(products);
-
     let main = document.querySelector("main");
     const path = "../img/"
 
@@ -47,6 +51,7 @@ function setProducts( ) {
         botao.id = index;
 
         let div = document.createElement("div");
+        div.id = `${productsList[index].name}${index}`
         div.appendChild(imagem);
         div.appendChild(titulo);
         div.appendChild(preco);
@@ -64,6 +69,28 @@ function comprar(event) {
 function setCarrinho() {
     let enviar = JSON.stringify(carrinho);
     sessionStorage.setItem('carrinho', enviar);
+}
+
+function filtrarCategoria() {
+    let categoryId = this.id;
+
+    for (let index = 0; index < products.length; index++) {
+        if (categoryId != products[index].category) {
+            let product = document.getElementById(`${products[index].name}${index}`);
+            product.style.display = "none";
+        } else {
+            let product = document.getElementById(`${products[index].name}${index}`);
+            product.style.display = "flex";
+        }
+    }
+}
+
+function mostraTudo() {
+    for (let index = 0; index < products.length; index++) {
+        let product = document.getElementById(`${products[index].name}${index}`);
+        product.style.display = "flex";
+
+    }
 }
 
 function start() {
