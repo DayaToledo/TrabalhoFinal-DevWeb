@@ -7,7 +7,7 @@ function recupera() {
 }
 
 function setProducts() {
-    let main = document.querySelector("main");
+    let section = document.querySelector("section");
     const path = "../img/"
 
     for (let index = 0; index < dados.length; index++) {
@@ -22,7 +22,7 @@ function setProducts() {
         div.appendChild(imagem);
         div.appendChild(titulo);
         div.appendChild(preco);
-        main.appendChild(div);
+        section.appendChild(div);
     }
 }
 
