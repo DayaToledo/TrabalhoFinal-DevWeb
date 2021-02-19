@@ -64,7 +64,6 @@ function comprar(event) {
 function setCarrinho() {
     let enviar = JSON.stringify(carrinho);
     sessionStorage.setItem('carrinho', enviar);
-    console.log(carrinho);
 }
 
 function start() {
