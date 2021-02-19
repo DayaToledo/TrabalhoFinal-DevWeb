@@ -9,16 +9,23 @@ body{
 
 section {
     display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+#pedidos {
+    background-color: red;
     flex-direction: column;
     align-items: center;
-    margin: 50px 0;
-    width: 100%;
+    width: 40%;
 }
 
 div {
     height: 80px;
-    width: 50%;
-    margin: 10px 20px 0 20px;
+    width: 80%;
+    margin-top: 10px;
     padding: 10px 20px;
     display: flex;
     flex-direction: row;
@@ -46,9 +53,10 @@ form{
     width: fit-content;
     height: fit-content;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background-color: white;
     border-radius: 6px;
+    width: 40%;
 }
 
 fieldset{
@@ -78,15 +86,4 @@ input, select{
     background-color: #f8f8f8;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
-}
-
-button{
-    width: 150px;
-    height: 50px;
-    font-weight: bold;
-    background-color: #7D5A8D;
-}
-
-button:hover{
-    background-color: #cccccc;
 }

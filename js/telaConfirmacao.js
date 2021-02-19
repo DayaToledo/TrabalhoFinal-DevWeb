@@ -9,9 +9,12 @@ function recupera() {
 
 function setDados() {
     const path = "../img/"
+    let main = document.querySelector("main");
     let dadosBox = document.querySelector("#dadosBox");
     let pedidosBox = document.querySelector("#pedidosBox");
 
+    let titulo = document.createElement("h4");
+    titulo.innerHTML = "Dados do comprador";
     let nome = document.createElement("p");
     nome.innerHTML = `Nome: ${dadosUser[0].nome}`;
     let email = document.createElement("p");
@@ -23,11 +26,16 @@ function setDados() {
     let local = document.createElement("p");
     local.innerHTML = `${dadosUser[0].cidade}, ${dadosUser[0].estado}, ${dadosUser[0].pais}`;
 
+    dadosBox.appendChild(titulo);
     dadosBox.appendChild(nome);
     dadosBox.appendChild(email);
     dadosBox.appendChild(cpf);
     dadosBox.appendChild(endereco);
     dadosBox.appendChild(local);
+
+    let pedidosTitulo = document.createElement("h4");
+    pedidosTitulo.innerHTML = "Pedidos";
+    pedidosBox.appendChild(pedidosTitulo);
 
     for (let index = 0; index < pedidos.length; index++) {
         let imagem = document.createElement("img");
@@ -46,9 +54,10 @@ function setDados() {
 
     
     let quantFrete = freteAleatorio();
-    let frete = document.createElement("h2");
-    frete.innerHTML = `O seu pedido irá chagar em ${quantFrete} dias!`
-    pedidosBox.appendChild(frete);
+    let frete = document.createElement("h3");
+    frete.innerHTML = `O seu pedido irá chegar em ${quantFrete} dias!`
+
+    main.appendChild(frete);
 
 }
 

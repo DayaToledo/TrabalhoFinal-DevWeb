@@ -7,8 +7,12 @@ function recupera() {
 }
 
 function setProducts() {
-    let section = document.querySelector("section");
+    let pedidosBox = document.querySelector("#pedidos");
     const path = "../img/"
+
+    let pedidosTitulo = document.createElement("h4");
+    pedidosTitulo.innerHTML = "Pedidos";
+    pedidosBox.appendChild(pedidosTitulo);
 
     for (let index = 0; index < pedidos.length; index++) {
         let imagem = document.createElement("img");
@@ -22,7 +26,7 @@ function setProducts() {
         div.appendChild(imagem);
         div.appendChild(titulo);
         div.appendChild(preco);
-        section.appendChild(div);
+        pedidosBox.appendChild(div);
     }
 }
 

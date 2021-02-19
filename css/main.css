@@ -57,9 +57,14 @@ h1 {
 }
 
 button{
+    width: 150px;
     height: 50px;
-    width: 200px;
     border-radius: 10px;
     border: none;
-    align-self: flex-end;
+    font-weight: bold;
+    background-color: #7D5A8D;
+}
+
+button:hover{
+    background-color: #cccccc;
 }
