@@ -18,7 +18,7 @@ function setDados() {
     let pedidosBox = document.querySelector("#pedidosBox");
 
     let titulo = document.createElement("h3");
-    titulo.innerHTML = "Dados do comprador";
+    titulo.innerHTML = "DADOS DO COMPRADOR";
     let nome = document.createElement("p");
     nome.innerHTML = `Nome: ${dadosUser[0].nome}`;
     let email = document.createElement("p");
@@ -37,35 +37,42 @@ function setDados() {
     dadosBox.appendChild(endereco);
     dadosBox.appendChild(local);
 
-    let pedidosTitulo = document.createElement("h3");
-    pedidosTitulo.innerHTML = "Pedidos";
-    //pedidosBox.appendChild(pedidosTitulo);
-
-    for (let index = 0; index < pedidos.length; index++) {
+    if (pedidos.length == 0) {
         let linha = document.createElement("tr");
-        let colunaImg = document.createElement("td");
-        let imagem = document.createElement("img");
-        let colunaTitulo = document.createElement("td");
-        let colunaPreco = document.createElement("td");
+        let mensagem = document.createElement("td");
+        mensagem.innerHTML = "Nenhum produto adicionado ao carrinho!";
+        mensagem.colSpan = "3";
 
-        imagem.src = path + pedidos[index].image;
-        colunaTitulo.innerHTML = pedidos[index].name;
-        colunaPreco.innerHTML = "R$ " + trataFloat(pedidos[index].price);
-
-        colunaImg.appendChild(imagem);
-        linha.appendChild(colunaImg);
-        linha.appendChild(colunaTitulo);
-        linha.appendChild(colunaPreco);
+        linha.appendChild(mensagem);
         pedidosBox.appendChild(linha);
+    } else {
+        for (let index = 0; index < pedidos.length; index++) {
+            let linha = document.createElement("tr");
+            let colunaImg = document.createElement("td");
+            let imagem = document.createElement("img");
+            let colunaTitulo = document.createElement("td");
+            let colunaPreco = document.createElement("td");
+
+            titulo.innerHTML = "Pedidos";
+            titulo.colSpan = "3";
+            imagem.src = path + pedidos[index].image;
+            colunaTitulo.innerHTML = pedidos[index].name;
+            colunaPreco.innerHTML = "R$ " + trataFloat(pedidos[index].price);
+
+            colunaImg.appendChild(imagem);
+            linha.appendChild(colunaImg);
+            linha.appendChild(colunaTitulo);
+            linha.appendChild(colunaPreco);
+            pedidosBox.appendChild(linha);
+        }
+
+
+        let quantFrete = freteAleatorio();
+        let frete = document.createElement("h4");
+        frete.innerHTML = `O seu pedido irá chegar em ${quantFrete} dias!`
+
+        main.appendChild(frete);
     }
-
-
-    let quantFrete = freteAleatorio();
-    let frete = document.createElement("h4");
-    frete.innerHTML = `O seu pedido irá chegar em ${quantFrete} dias!`
-
-    main.appendChild(frete);
-
 }
 
 function freteAleatorio() {

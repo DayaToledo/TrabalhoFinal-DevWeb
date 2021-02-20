@@ -8,7 +8,7 @@ body {
 }
 
 main {
-    padding: 0;
+    padding: 0 0 80px 0;
 }
 
 section {
@@ -53,17 +53,18 @@ th {
     border-collapse: collapse;
 }
 
-th:nth-child(1) {
+#titulo th {
     border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-
-th:nth-child(3) {
     border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-bottom: 2px solid #C2CAE8;
+    font-size: 22px; 
 }
 
-tr:nth-child(1) {
+#titulo {
+    height: 70px;
+}
+
+#colunas {
     height: 70px;
 }
 

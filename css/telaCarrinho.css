@@ -7,6 +7,10 @@ body {
         "footer";
 }
 
+main {
+    padding: 80px 0;
+}
+
 section {
     display: flex;
     flex-direction: row;
@@ -65,12 +69,20 @@ select {
     border-radius: 15px;
     border: none;
     background-color: #f8f8f8;
+    vertical-align: top;
 }
 
 input:focus,
 select:focus {
     outline: none;
     background-color: #eeeeee;
+}
+
+input:disabled,
+select:disabled {
+    cursor: not-allowed;
+    background-color: #eeeeee;
+    opacity: 0.7;
 }
 
 button {
@@ -92,17 +104,18 @@ th {
     border-collapse: collapse;
 }
 
-th:nth-child(1) {
+#titulo th {
     border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-
-th:nth-child(3) {
     border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-bottom: 2px solid #C2CAE8;
+    font-size: 22px; 
 }
 
-tr:nth-child(1) {
+#titulo {
+    height: 70px;
+}
+
+#colunas {
     height: 70px;
 }
 
