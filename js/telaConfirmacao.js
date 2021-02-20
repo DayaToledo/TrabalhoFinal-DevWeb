@@ -1,6 +1,10 @@
 let pedidos = [];
 let dadosUser = [];
 
+function trataFloat(valor) {
+    return valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+}
+
 function recupera() {
     pedidos = JSON.parse(sessionStorage.getItem('pedidos'));
     dadosUser = JSON.parse(sessionStorage.getItem('dadosUser'));
@@ -35,24 +39,27 @@ function setDados() {
 
     let pedidosTitulo = document.createElement("h3");
     pedidosTitulo.innerHTML = "Pedidos";
-    pedidosBox.appendChild(pedidosTitulo);
+    //pedidosBox.appendChild(pedidosTitulo);
 
     for (let index = 0; index < pedidos.length; index++) {
+        let linha = document.createElement("tr");
+        let colunaImg = document.createElement("td");
         let imagem = document.createElement("img");
-        imagem.src = path + pedidos[index].image;
-        let titulo = document.createElement("h2");
-        titulo.innerHTML = pedidos[index].name;
-        let preco = document.createElement("p");
-        preco.innerHTML = "R$ " + pedidos[index].price;
+        let colunaTitulo = document.createElement("td");
+        let colunaPreco = document.createElement("td");
 
-        let div = document.createElement("div");
-        div.appendChild(imagem);
-        div.appendChild(titulo);
-        div.appendChild(preco);
-        pedidosBox.appendChild(div);
+        imagem.src = path + pedidos[index].image;
+        colunaTitulo.innerHTML = pedidos[index].name;
+        colunaPreco.innerHTML = "R$ " + trataFloat(pedidos[index].price);
+
+        colunaImg.appendChild(imagem);
+        linha.appendChild(colunaImg);
+        linha.appendChild(colunaTitulo);
+        linha.appendChild(colunaPreco);
+        pedidosBox.appendChild(linha);
     }
 
-    
+
     let quantFrete = freteAleatorio();
     let frete = document.createElement("h4");
     frete.innerHTML = `O seu pedido irá chegar em ${quantFrete} dias!`
