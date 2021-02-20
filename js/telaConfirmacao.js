@@ -16,18 +16,18 @@ function setDados() {
     let main = document.querySelector("main");
     let dadosBox = document.querySelector("#dadosBox");
     let pedidosBox = document.querySelector("#pedidosBox");
-
     let titulo = document.createElement("h3");
-    titulo.innerHTML = "DADOS DO COMPRADOR";
     let nome = document.createElement("p");
-    nome.innerHTML = `Nome: ${dadosUser[0].nome}`;
     let email = document.createElement("p");
-    email.innerHTML = `E-mail: ${dadosUser[0].email}`;
     let cpf = document.createElement("p");
-    cpf.innerHTML = `CPF: ${dadosUser[0].cpf}`;
     let endereco = document.createElement("p");
-    endereco.innerHTML = `Endereço: Rua ${dadosUser[0].rua}, Nº ${dadosUser[0].num}, Bairro ${dadosUser[0].bairro}`;
     let local = document.createElement("p");
+    
+    titulo.innerHTML = "DADOS DO COMPRADOR";
+    nome.innerHTML = `Nome: ${dadosUser[0].nome}`;
+    email.innerHTML = `E-mail: ${dadosUser[0].email}`;
+    cpf.innerHTML = `CPF: ${dadosUser[0].cpf}`;
+    endereco.innerHTML = `Endereço: Rua ${dadosUser[0].rua}, Nº ${dadosUser[0].num}, Bairro ${dadosUser[0].bairro}`;
     local.innerHTML = `${dadosUser[0].cidade}, ${dadosUser[0].estado}, ${dadosUser[0].pais}`;
 
     dadosBox.appendChild(titulo);
@@ -46,25 +46,40 @@ function setDados() {
         linha.appendChild(mensagem);
         pedidosBox.appendChild(linha);
     } else {
+
+        let valorTotal = 0;
         for (let index = 0; index < pedidos.length; index++) {
             let linha = document.createElement("tr");
             let colunaImg = document.createElement("td");
             let imagem = document.createElement("img");
-            let colunaTitulo = document.createElement("td");
+            let colunaName = document.createElement("td");
             let colunaPreco = document.createElement("td");
 
-            titulo.innerHTML = "Pedidos";
-            titulo.colSpan = "3";
+            valorTotal = valorTotal + pedidos[index].price;
+
             imagem.src = path + pedidos[index].image;
-            colunaTitulo.innerHTML = pedidos[index].name;
+            colunaName.innerHTML = pedidos[index].name;
             colunaPreco.innerHTML = "R$ " + trataFloat(pedidos[index].price);
 
             colunaImg.appendChild(imagem);
             linha.appendChild(colunaImg);
-            linha.appendChild(colunaTitulo);
+            linha.appendChild(colunaName);
             linha.appendChild(colunaPreco);
             pedidosBox.appendChild(linha);
         }
+        let linha = document.createElement("tr");
+        let totalText = document.createElement("td");
+        let espace = document.createElement("td");
+        let total = document.createElement("td");
+
+        linha.id = "total";
+        totalText.innerText = "TOTAL";
+        total.innerHTML = "R$ " + trataFloat(valorTotal);
+
+        linha.appendChild(totalText);
+        linha.appendChild(espace);
+        linha.appendChild(total);
+        pedidosBox.appendChild(linha);
 
 
         let quantFrete = freteAleatorio();

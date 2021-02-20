@@ -32,12 +32,15 @@ function setProducts() {
         document.querySelector("main > a").style.display = "none";
     } else {
 
+        let valorTotal = 0;
         for (let index = 0; index < pedidos.length; index++) {
             let linha = document.createElement("tr");
             let colunaImg = document.createElement("td");
             let imagem = document.createElement("img");
             let colunaTitulo = document.createElement("td");
             let colunaPreco = document.createElement("td");
+
+            valorTotal = valorTotal + pedidos[index].price;
 
             imagem.src = path + pedidos[index].image;
             colunaTitulo.innerHTML = pedidos[index].name;
@@ -49,6 +52,19 @@ function setProducts() {
             linha.appendChild(colunaPreco);
             pedidosTable.appendChild(linha);
         }
+        let linha = document.createElement("tr");
+        let totalText = document.createElement("td");
+        let espace = document.createElement("td");
+        let total = document.createElement("td");
+
+        linha.id = "total";
+        totalText.innerText = "TOTAL";
+        total.innerHTML = "R$ " + trataFloat(valorTotal);
+
+        linha.appendChild(totalText);
+        linha.appendChild(espace);
+        linha.appendChild(total);
+        pedidosTable.appendChild(linha);
     }
 }
 

@@ -39,20 +39,21 @@ function setProducts() {
     const path = "../img/"
 
     for (let index = 0; index < productsList.length; index++) {
+        let div = document.createElement("div");
         let imagem = document.createElement("img");
-        imagem.src = path + productsList[index].image;
         let titulo = document.createElement("h2");
-        titulo.innerHTML = productsList[index].name;
         let preco = document.createElement("p");
-        preco.innerHTML = "R$ " + trataFloat(productsList[index].price);
         let botao = document.createElement("button");
+
+        imagem.src = path + productsList[index].image;
+        titulo.innerHTML = productsList[index].name;
+        preco.innerHTML = "R$ " + trataFloat(productsList[index].price);
         botao.type = "submit";
         botao.innerHTML = "COMPRAR";
         botao.onclick = comprar;
         botao.id = index;
-
-        let div = document.createElement("div");
         div.id = `${productsList[index].name}${index}`
+
         div.appendChild(imagem);
         div.appendChild(titulo);
         div.appendChild(preco);

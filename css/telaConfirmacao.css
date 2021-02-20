@@ -64,6 +64,26 @@ th {
     height: 70px;
 }
 
+#total {
+    background-color: #44487B;
+    color: #FFFFFF;
+    border-collapse: collapse;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#total td {
+    border: none;
+}
+
+#total td:nth-child(1) {
+    border-bottom-left-radius: 10px;
+}
+
+#total td:nth-child(3) {
+    border-bottom-right-radius: 10px;
+}
+
 #colunas {
     height: 70px;
 }
