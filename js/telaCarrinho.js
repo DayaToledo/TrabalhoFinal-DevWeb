@@ -1,32 +1,35 @@
 let pedidos = [];
 let dadosUser = [];
 
+function trataFloat(valor) {
+    return valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+}
+
 function recupera() {
     pedidos = JSON.parse(sessionStorage.getItem('carrinho'));
     setProducts();
 }
 
 function setProducts() {
-    let pedidosBox = document.querySelector("#pedidos");
+    let pedidosTable = document.querySelector("#pedidos");
     const path = "../img/"
 
-    let pedidosTitulo = document.createElement("h4");
-    pedidosTitulo.innerHTML = "Pedidos";
-    pedidosBox.appendChild(pedidosTitulo);
-
     for (let index = 0; index < pedidos.length; index++) {
+        let linha = document.createElement("tr");
+        let colunaImg = document.createElement("td");
         let imagem = document.createElement("img");
+        let colunaTitulo = document.createElement("td");
+        let colunaPreco = document.createElement("td");
+        
         imagem.src = path + pedidos[index].image;
-        let titulo = document.createElement("h2");
-        titulo.innerHTML = pedidos[index].name;
-        let preco = document.createElement("p");
-        preco.innerHTML = "R$ " + pedidos[index].price;
+        colunaTitulo.innerHTML = pedidos[index].name;
+        colunaPreco.innerHTML = "R$ " + trataFloat(pedidos[index].price);
 
-        let div = document.createElement("div");
-        div.appendChild(imagem);
-        div.appendChild(titulo);
-        div.appendChild(preco);
-        pedidosBox.appendChild(div);
+        colunaImg.appendChild(imagem);
+        linha.appendChild(colunaImg);
+        linha.appendChild(colunaTitulo);
+        linha.appendChild(colunaPreco);
+        pedidosTable.appendChild(linha);
     }
 }
 
