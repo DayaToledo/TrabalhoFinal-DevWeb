@@ -1,5 +1,9 @@
 let carrinho = [];
 
+function trataFloat(valor) {
+    return valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+}
+
 function getList(array) {
     let list = [];
     for (let index = 0; index < array.length; index++) {
@@ -21,14 +25,12 @@ function setCategory() {
     let sidebar = document.querySelector("ul");
     categoryList.sort();
     for (let index = 0; index < categoryList.length; index++) {
-        let link = document.createElement("a");
-        link.id = index;
-        link.onclick = filtrarCategoria;
         let item = document.createElement("li");
         item.innerHTML = categoryList[index];
+        item.id = index;
+        item.onclick = filtrarCategoria;
 
-        link.appendChild(item);
-        sidebar.appendChild(link);
+        sidebar.appendChild(item);
     }
 }
 
@@ -43,7 +45,7 @@ function setProducts() {
         let titulo = document.createElement("h2");
         titulo.innerHTML = productsList[index].name;
         let preco = document.createElement("p");
-        preco.innerHTML = "R$ " + productsList[index].price;
+        preco.innerHTML = "R$ " + trataFloat(productsList[index].price);
         let botao = document.createElement("button");
         botao.type = "submit";
         botao.innerHTML = "COMPRAR";
@@ -83,14 +85,27 @@ function filtrarCategoria() {
             product.style.display = "flex";
         }
     }
+    deixaSelecionado(this.id);
 }
 
 function mostraTudo() {
     for (let index = 0; index < products.length; index++) {
         let product = document.getElementById(`${products[index].name}${index}`);
         product.style.display = "flex";
-
     }
+    deixaSelecionado("todos");
+}
+
+function deixaSelecionado(id) {
+    let lis = document.querySelectorAll("li");
+    lis.forEach(li => {
+        li.style.backgroundColor = "#8380B6";
+        li.style.color = "#000022";
+    });
+
+    let liAtual = document.getElementById(id)
+    liAtual.style.backgroundColor = "#44487B";
+    liAtual.style.color = "#FFFFFF";
 }
 
 function start() {

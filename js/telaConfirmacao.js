@@ -13,7 +13,7 @@ function setDados() {
     let dadosBox = document.querySelector("#dadosBox");
     let pedidosBox = document.querySelector("#pedidosBox");
 
-    let titulo = document.createElement("h4");
+    let titulo = document.createElement("h3");
     titulo.innerHTML = "Dados do comprador";
     let nome = document.createElement("p");
     nome.innerHTML = `Nome: ${dadosUser[0].nome}`;
@@ -33,7 +33,7 @@ function setDados() {
     dadosBox.appendChild(endereco);
     dadosBox.appendChild(local);
 
-    let pedidosTitulo = document.createElement("h4");
+    let pedidosTitulo = document.createElement("h3");
     pedidosTitulo.innerHTML = "Pedidos";
     pedidosBox.appendChild(pedidosTitulo);
 
@@ -54,7 +54,7 @@ function setDados() {
 
     
     let quantFrete = freteAleatorio();
-    let frete = document.createElement("h3");
+    let frete = document.createElement("h4");
     frete.innerHTML = `O seu pedido irá chegar em ${quantFrete} dias!`
 
     main.appendChild(frete);

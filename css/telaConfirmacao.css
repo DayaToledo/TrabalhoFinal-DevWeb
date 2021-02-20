@@ -42,11 +42,6 @@ div {
     background-color: #7D5A8D;
 }
 
-h2 {
-    color: #FFFFFF;
-    font-size: 20px; 
-}
-
 img {
     height: 100%;
     width: auto;
@@ -55,11 +50,4 @@ img {
 div p{
     color: #FFFFFF;
     font-size: 24px;
-}
-
-h3 {
-    color: #000000;
-    font-size: 30px; 
-    text-align: center;
-    display: inline;
 }
