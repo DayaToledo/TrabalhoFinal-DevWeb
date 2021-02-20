@@ -20,7 +20,7 @@ function setProducts() {
         let imagem = document.createElement("img");
         let colunaTitulo = document.createElement("td");
         let colunaPreco = document.createElement("td");
-        
+
         imagem.src = path + pedidos[index].image;
         colunaTitulo.innerHTML = pedidos[index].name;
         colunaPreco.innerHTML = "R$ " + trataFloat(pedidos[index].price);
@@ -33,7 +33,7 @@ function setProducts() {
     }
 }
 
-function getForm(){
+function getForm() {
     let nome = document.getElementById("nome").value;
     let email = document.getElementById("email").value;
     let cpf = document.getElementById("cpf").value;

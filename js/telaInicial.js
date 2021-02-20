@@ -23,7 +23,6 @@ function setCategory() {
     let categoryList = getList(category);
 
     let sidebar = document.querySelector("ul");
-    categoryList.sort();
     for (let index = 0; index < categoryList.length; index++) {
         let item = document.createElement("li");
         item.innerHTML = categoryList[index];
