@@ -68,6 +68,11 @@ button:focus {
     outline: none;
 }
 
+button:active {
+    background-image: linear-gradient(to bottom, #f8c630, #f8c630, #44487B);
+    transition: 1.5s;
+}
+
 h1 {
     color: #FFFFFF;
     font-size: 30px;
